@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Call Interface</title>
+    <link rel="stylesheet" href="call.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/css/shepherd.css"/>
+</head>
+<body>
+    <div class="notification" id="notification">Audio Only Mode</div>
+    <div class="announcement">
+        <span>New Feature: Interactive Tutorial</span>
+        <button class="announcement-close"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="zoom-interface">
+        <div class="main-content">
+            <div class="video-container">
+                <div class="video-placeholder"></div>
+            </div>
+        </div>
+        
+        <div class="bottom-controls">
+            <div class="control-group left">
+                <button class="control-btn"><i class="fas fa-microphone"></i><span>Join Audio</span></button>
+                <div class="video-control">
+                    <button class="control-btn video-btn">
+                        <i class="fas fa-video"></i>
+                        <span>Start Video</span>
+                    </button>
+                    <button class="control-btn audio-only-btn">
+                        <i class="fas fa-headphones"></i>
+                        <span>Audio Only</span>
+                    </button>
+                    <div class="video-menu" id="videoMenu">
+                        <div class="menu-item" id="selectCamera">
+                            <span>Select a Camera</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="menu-item">Mirror My Video</div>
+                        <div class="menu-item">Blur My Background...</div>
+                        <div class="menu-item">Choose Background...</div>
+                        <div class="menu-item">Video Settings...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="control-group center">
+                <button class="control-btn"><i class="fas fa-users"></i><span>Participants</span></button>
+                <button class="control-btn"><i class="fas fa-comments"></i><span>Chat</span></button>
+                <button class="control-btn"><i class="fas fa-heart"></i><span>Reactions</span></button>
+                <button class="control-btn"><i class="fas fa-share-square"></i><span>Share Screen</span></button>
+                <button class="control-btn"><i class="fas fa-shield-alt"></i><span>Security</span></button>
+            </div>
+            
+            <div class="control-group right">
+                <button class="control-btn end-btn"><span>End</span></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/shepherd.js@10.0.1/dist/js/shepherd.min.js"></script>
+    <script src="call.js"></script>
+    <script src="bandwidth-service.js"></script>
+
+    <div class="modal" id="videoSettingsModal">
+        <div class="modal-content settings-layout">
+            <div class="settings-sidebar">
+                <div class="sidebar-item active">
+                    <i class="fas fa-cog"></i>
+                    <span>General</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-video"></i>
+                    <span>Video</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-microphone"></i>
+                    <span>Audio</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-image"></i>
+                    <span>Background</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Statistics</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Bandwidth Control</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-clock"></i>
+                    <span>Low-Latency Frame</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </div>
+            </div>
+            <div class="settings-content">
+                <div class="settings-header">
+                    <h2>Settings</h2>
+                    <button class="close-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="settings-body">
+                    <div class="settings-panel general-panel active">
+                        <div class="setting-section">
+                            <label class="setting-checkbox-label">
+                                <input type="checkbox" checked>
+                                <span>Always show meeting controls</span>
+                            </label>
+                        </div>
+                        <div class="setting-section">
+                            <h3>Maximum participants displayed per screen in Gallery View:</h3>
+                            <div class="radio-group">
+                                <label>
+                                    <input type="radio" name="participants" value="9">
+                                    <span>9 participants</span>
+                                </label>
+                                <label>
+                                    <input type="radio" name="participants" value="25" checked>
+                                    <span>25 participants</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bandwidth-content settings-panel">
+                    <h3>Bandwidth Profiles</h3>
+                    <div class="bandwidth-options">
+                        <label class="bandwidth-option">
+                            <input type="radio" name="bandwidth" value="high">
+                            <div class="option-content">
+                                <span>High Bandwidth Profile</span>
+                                <small>Full HD video with high-quality audio (for users with fast, stable connections, unlimited data connection)</small>
+                            </div>
+                        </label>
+                        <label class="bandwidth-option">
+                            <input type="radio" name="bandwidth" value="balanced" checked>
+                            <div class="option-content">
+                                <span>Balanced Profile</span>
+                                <small>Medium video quality for unstable connections (for users with steady connections, limited data connection)</small>
+                            </div>
+                        </label>
+                        <label class="bandwidth-option">
+                            <input type="radio" name="bandwidth" value="low">
+                            <div class="option-content">
+                                <span>Low Bandwidth Profile</span>
+                                <small>Audio-only mode for users on weak connections (for users with unsteady connections, limited data connection)</small>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

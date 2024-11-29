@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetings Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Beginner Mode Toggle -->
+    <div class="mode-toggle">
+        <button id="beginnerModeToggle">Beginner Mode: ON</button>
+    </div>
+    <!-- Announcement Banner -->
+    <div class="announcement">
+        <div class="announcement-text">
+            <span>🚀 Zoom Into the Future:</span>
+            <span>Check out our exciting updates! ✨</span>
+            <div class="video-buttons">
+                <button id="playVideoButton" class="video-btn" data-video="https://www.youtube.com/embed/9DFmPkkYt-0">
+                    Tutorial <i class="fas fa-play"></i>
+                </button>
+                <button id="demoButton" class="video-btn" data-video="https://www.youtube.com/embed/zw5A8ipwhWU">
+                    Demo <i class="fas fa-play"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="header">
+            <h1>Meetings</h1>
+        </div>
+        <div class="button-container">
+            <button class="meeting-btn new-meeting" data-tooltip="Start a new meeting."><i class="fas fa-video"></i> New</button>
+            <button class="meeting-btn join" data-tooltip="Join an existing meeting."><i class="fas fa-plus"></i> Join</button>
+            <button class="meeting-btn schedule beginner-hide" data-tooltip="Schedule a meeting (Advanced Feature)."><i class="fas fa-calendar-alt"></i> Schedule</button>
+            <button class="meeting-btn share-screen beginner-hide" data-tooltip="Share your screen (Advanced Feature)."><i class="fas fa-share-square"></i> Share</button>
+        </div>
+        <p class="add-calendar beginner-hide" data-tooltip="Add your calendar for scheduled meetings.">Add a calendar</p>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="bottom-nav">
+        <a href="#" class="nav-item"><i class="fas fa-video"></i> Meetings</a>
+        <a href="#" class="nav-item"><i class="fas fa-comments"></i> Team Chat</a>
+        <a href="#" class="nav-item"><i class="fas fa-address-book"></i> Contacts</a>
+        <a href="#" class="nav-item"><i class="fas fa-ellipsis-h"></i> More</a>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <iframe 
+                id="videoFrame"
+                width="100%" 
+                height="315" 
+                src="" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+
+    <!-- Settings Form Modal -->
+    <div id="settingsForm" class="modal">
+        <div class="modal-content">
+            <span class="close-settings">&times;</span>
+            <h2>Settings</h2>
+            <form>
+                <label><input type="radio" name="profile" value="Low-Latency Frame-Freezing"> Low-Latency Frame-Freezing</label><br>
+                <label><input type="radio" name="profile" value="High Bandwidth Profile"> High Bandwidth Profile</label><br>
+                <label><input type="radio" name="profile" value="Balanced Profile"> Balanced Profile</label><br>
+                <label><input type="radio" name="profile" value="Low Bandwidth Profile"> Low Bandwidth Profile</label>
+            </form>
+        </div>
+    </div>
+
+    <!-- Meeting Credentials Form Modal -->
+    <div id="meetingForm" class="modal">
+        <div class="modal-content">
+            <span class="close-meeting">&times;</span>
+            <h2>New Meeting</h2>
+            <form>
+                <label for="meetingName">Meeting Name:</label>
+                <input type="text" id="meetingName" name="meetingName" placeholder="Enter meeting name" required>
+                
+                <label for="meetingPassword">Meeting Password:</label>
+                <input type="password" id="meetingPassword" name="meetingPassword" placeholder="Enter password" required>
+                
+                <button type="submit" class="submit-meeting-btn">Create Meeting</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
